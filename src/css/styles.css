@@ -1,0 +1,91 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+/* blue = #005cb9;
+orange = #ec7700;
+yellow = #fed925;
+magenta = #b32572;
+light-blue = #f9fbfc;
+gray-outline = #e6eaec;
+gray-text = #646464;  */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  background:#fff;
+  font-size:1rem;
+  max-width:1100px;
+  text-align:center;
+}
+
+p {
+  padding:0;
+  margin:0;
+}
+
+header, footer {
+  margin:0;
+  padding:0;
+}
+
+h1 {
+  font-size:2.9rem;
+  font-weight:700;
+}
+
+.btn {
+  display:inline-block;
+  text-transform: none;
+  margin:2rem 1rem 0.5rem 1rem;
+  box-shadow: none;
+}
+
+.btn:hover {
+  background:none;
+}
+.btn:active {
+  background:none;
+}
+.btn:visited {
+  background:none;
+}
+
+
+ .btn-yellow{
+  border: solid 2px #fed925;
+  color:#fed925;
+  background:none;
+  height:auto;
+  box-shadow: none;
+}
+
+#showcase {
+  background:#005cb9;
+  padding:1.5rem;
+  margin:0;
+}
+
+#showcase h1, #showcase p {
+  color:#ffffff;
+}
+
+#main h2 {
+  color:#005cb9;
+  font-size:2.4rem;
+  font-weight: 700;
+  padding:0.8rem;
+}
+
+#main p {
+  color:#000;
+  line-height: 1.75rem;
+  font-size:1.4rem;
+  font-weight: 300;
+  padding:0.8rem;
+}
+
+

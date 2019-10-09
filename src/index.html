@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Google Tag Manager -->					
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':					
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],					
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);					
+  })(window,document,'script','dataLayer','GTM-N5V228');</script>					
+  <!-- End Google Tag Manager -->					
+
+  <title>Form Test</title>
+
+   <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+   <link rel="stylesheet" href="./css/styles.css">
+
+ 
+  
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
+    <script>
+    function submitToAPI(e) {
+
+      console.log('trying to submit');
+      e.preventDefault();
+      var URL = "https://lyzbohwh13.execute-api.us-west-2.amazonaws.com/mailToFormStage/formtomailresource";
+
+           var Namere = /[A-Za-z]{1}[A-Za-z]/;
+           if (!Namere.test($("#name-input").val())) {
+                        alert ("Name can not less than 2 char");
+               return;
+           }
+           var mobilere = /[0-9]{10}/;
+           if (!mobilere.test($("#phone-input").val())) {
+               alert ("Please enter valid mobile number");
+               return;
+           }
+           if ($("#email-input").val()=="") {
+               alert ("Please enter your email id");
+               return;
+           }
+
+           var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+           if (!reeamil.test($("#email-input").val())) {
+               alert ("Please enter valid email address");
+               return;
+           }
+
+      var name = $("#name-input").val();
+      var phone = $("#phone-input").val();
+      var email = $("#email-input").val();
+      var desc = $("#description-input").val();
+      var data = {
+         name : name,
+         phone : phone,
+         email : email,
+         desc : desc
+       };
+
+      $.ajax({
+        type: "POST",
+        url : "https://lyzbohwh13.execute-api.us-west-2.amazonaws.com/mailToFormStage/formtomailresource",
+        dataType: "json",
+        crossDomain: "true",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+
+        
+        success: function () {
+          // clear form and show a success message
+          //alert("Successfull");
+          document.getElementById("contact-form").reset();
+          window.location.href = "./thank_you.html";
+          // location.reload();
+        },
+        error: function () {
+          // show an error message
+          alert("UnSuccessfull");
+        }});
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->					
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5V228"					
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>					
+  <!-- End Google Tag Manager (noscript) -->					
+
+  <header>
+    <div id="logo-main">
+      Logo
+    </div>
+    <div id="phone-holder">
+      Call to start a conversation today: 1-833-248-9185 TTY:711
+    </div>
+  </header>
+
+  <div id="showcase">
+    <h1>Welcome to the affordable coverage you deserve.</h1>
+
+    <p>Discover all the ways you can bridge the gap in medical coverage. Now, at low monthly cost.</p>
+    <a class="btn btn-yellow" href="#form-holder">Start the conversation</a> 
+  </div>
+
+  <div id="main">
+    <h2>People who qualified saved an average of $6,600 for the year.</h2>
+    <p>Talk to us about affordable coverage that can protect you in two ways:</p>
+
+    &mdash;Interim coverage for the short term
+    &mdash;Unforeseen catastrophic events 
+
+    <h2>Four ways to help you and your family.</h2>
+  </div>
+
+  <div id="card-holder">
+    <div id="card">
+      icon
+      <h3>Critical Illness & Accident</h3>
+      <hr>
+
+      <p>You never know when something bad can happen. Protect yourself from the daily costs that can add up if you have a serious illness or injury from an accident, starting at just $1.15 a day.*</p>
+    </div>
+    <a class="btn btn-card" href="#form-holder">Start the conversation</a> 
+
+    <div id="card">
+        icon
+        <h3>Short Term Medical</h3>
+        <hr>
+  
+        <p>Between jobs, a recent graduate or waiting for another health plan to take effect? Here's a great way t get affordable, temporary coverage. And it all comes with a maximum benefit of $2,000,000 during your coverage period.</p>
+      </div>
+      <a class="btn btn-card" href="#form-holder">Start the conversation</a> 
+
+      <div id="card">
+          icon
+          <h3>Health & Wellness</h3>
+          <hr>
+    
+          <p>Enjoy savings on prescription drugs, the conveience of the telemedicine, even savings on specialty health and wellness services like chiropractors, massage therapists and more. All starting as low as $19.99 per month.</p>
+        </div>
+        <a class="btn btn-card" href="#form-holder">Start the conversation</a> 
+
+  </div>
+
+    <div id="form-holder">
+      <h2>Start the conversation now: Find a health plan that's right for you.</h2>
+  <form id="contact-form" method="post">
+    <p>*Required Field</p>
+    <h4>Name:</h4>
+    <input type="text" style="height:35px;" id="name-input" placeholder="Enter name here…" class="form-control" style="width:100%;" /><br/>
+    <h4>Phone:</h4>
+    <input type="phone" style="height:35px;" id="phone-input" placeholder="Enter phone number" class="form-control" style="width:100%;"/><br/>
+    <h4>Email:</h4>
+    <input type="email" style="height:35px;" id="email-input" placeholder="Enter email here…" class="form-control" style="width:100%;"/><br/>
+    <h4>How can we help you?</h4>
+    <textarea id="description-input" rows="3" placeholder="Enter your message…" class="form-control" style="width:100%;"></textarea><br/>
+    <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control" style="width:100%;"></div>
+    <button type="button" onClick="submitToAPI(event)" class="btn btn-lg" style="margin-top:20px;">Submit</button>
+</form>
+</div>
+
+<div id="footer-legal">
+    <p>*Plus a one-time, non-refundable enrollment fee
+        of $15.</p>
+    <p>CALLING AGREEMENT: By clicking the “Yes, have
+        read and agree" check box above, you consent and
+        request that DAC, its affiliates, and those acting on
+        their behalf, may call or text you using an
+        automated telephone dialing system and/or a
+        prerecorded message. The types of calls or text
+        messages you may receive include advertisements
+        or telemarketing messages concerning our benefits
+        and services. Calls can be made to any number you
+        provide above, even if listed on a national or state
+        Do Not Call registry. You understand that consent is
+        not a condition of purchase and you may also
+        receive a quote by calling us at the number listed on
+        this website.</p>
+</div>
+
+<footer>
+    <div id="logo-footer">
+        Logo
+      </div>
+      <div id="phone-holder-footer">
+        Call to start a conversation today: 1-833-248-9185 TTY:711
+      </div>
+</footer>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>
