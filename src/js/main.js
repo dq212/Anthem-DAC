@@ -18,7 +18,8 @@
     // //Function to open modal
     function openModal(e, txt="") {
         var str = txt;
-        modal.style.display = 'block';
+        // modal.style.display = 'block';
+        $('#simpleModal').show();
        
         modalContent.innerHTML = str;
       
@@ -26,10 +27,12 @@
     
     function closeModal() {
         // console.log(123);
-        modal.style.display = 'none';
+        // modal.style.display = 'none';
+        $('#simpleModal').hide();
     }
 
     function clickOutside(e) {
         if (e.target == modal)
-        modal.style.display = 'none';
+        // modal.style.display = 'none';
+        $('#simpleModal').hide();
     }

@@ -12,13 +12,15 @@
   })(window,document,'script','dataLayer','GTM-N5V228');</script>					
   <!-- End Google Tag Manager -->					
 
-  <title>Form Test</title>
+  <title>Affordable Coverage</title>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
    <!-- Compiled and minified CSS -->
    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
-   <link rel="stylesheet" href="./css/styles.css">
+   <link rel="stylesheet" href="https://s3.amazonaws.com/daccoverage.com/css/styles.css">
+
+   <link rel="shortcut icon" href="https://www.daccoverage.com/imgs/favicon.png"> 
   
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
     <script>
@@ -26,7 +28,8 @@
       $('#btn-submit').removeClass('un-sucessful sucessful');
       // console.log('trying to submit');
       e.preventDefault();
-      var URL = "https://0un7f2ome1.execute-api.us-west-2.amazonaws.com/02";
+      // var URL = "https://0un7f2ome1.execute-api.us-west-2.amazonaws.com/02";
+      var URL = "https://lyzbohwh13.execute-api.us-west-2.amazonaws.com/mailToFormStage/formtomailresource";
       
       // console.log($('#c1').prop('checked'));
          
@@ -46,7 +49,8 @@
                return;
            }
 
-           var mobilere = /[0-9]{10}/;
+           var mobilere = /((\(\d{3}\)?)|(\d{3}))([\s-./]?)(\d{3})([\s-./]?)(\d{4})/;
+          
            if (!mobilere.test($("#phone-input").val())) {
               openModal(null, txt = "Please enter valid number");
               //  alert ("Please enter valid number");
@@ -81,7 +85,7 @@
            }
 
           //  var Statere = null
-          //  if (!Statere.test($("#state-input").val())) {
+          //  if (!Statere.test($("#state-input").val())) { 
           //      alert ("Please select a state from the dropdown");
           //      return;
           //  }
@@ -134,23 +138,57 @@
         data: JSON.stringify(data),
 
         
-        success: function () {
-          // clear form and show a success message
-          //alert("Successfull");
-          document.getElementById("contact-form").reset();
-          $('#btn-submit').addClass('successful');
-          // window.location.href = "./thank_you.html";
-          window.open('https://www.daccoverage.com/thank_you.html', '_blank');
-          // location.reload();
-        },
-        error: function () {
-          $('#btn-submit').addClass('un-successful');
-          // show an error message
-          // alert("UnSuccessfull");
-        }});
-    }
-  </script>
+    //     success: function () {
+		//    //datalayer for validation on successful
+		//    dataLayer.push({
+		//    'eventLabel' : 'Form Submission_Successful'
+		//    });
+    //       // clear form and show a success message
+    //       //alert("Successfull");
+    //       document.getElementById("contact-form").reset();
+    //       $('#btn-submit').addClass('successful');
+    //       // window.location.href = "./thank_you.html";
+    //       window.open('https://www.daccoverage.com/thank_you.html', '_blank');
+    //       // location.reload();
+    //     },
+    //     error: function () {
+		// //datalayer for validation on error
+		//    dataLayer.push({
+		//    'eventLabel' : 'Form Submission_Unsuccessful'
+		//    });
+    //       $('#btn-submit').addClass('un-successful');
+    //       // show an error message
+    //       // alert("UnSuccessfull");
+    //     }});
+    // }
 
+    success: function () {
+//datalayer for validation on successful
+dataLayer.push({
+'eventLabel' : 'Form Submission_Successful'
+});
+// clear form and show a success message
+//alert("Successfull");
+document.getElementById("contact-form").reset();
+$('#btn-submit').addClass('successful');
+// window.location.href = "./thank_you.html";
+//random function you want to call
+
+//  var win = window.open('./thank_you.html');
+window.open('https://www.daccoverage.com/thank_you.html', '_blank');
+// location.reload();
+},
+error: function () {
+//datalayer for validation on error
+dataLayer.push({
+'eventLabel' : 'Form Submission_Unsuccessful'
+});
+$('#btn-submit').addClass('un-successful');
+// show an error message
+// alert("UnSuccessfull");
+}});
+}
+  </script>
 
 
 
@@ -410,4 +448,4 @@
   <script src="./js/main.js"></script>
 
 </body>
-</html>
+</html> 
